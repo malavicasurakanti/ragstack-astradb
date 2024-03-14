@@ -76,7 +76,7 @@ def check_password():
 
     def password_entered():
         """Checks whether a password entered by the user is correct."""
-        if st.session_state['datastax'] in st.secrets['Ragllms'] and hmac.compare_digest(st.session_state['password'], st.secrets.passwords[st.session_state['username']]):
+        if st.session_state['username'] in st.secrets['passwords'] and hmac.compare_digest(st.session_state['password'], st.secrets.passwords[st.session_state['username']]):
             st.session_state['password_correct'] = True
             st.session_state.user = st.session_state['username']
             del st.session_state['password']  # Don't store the password.
